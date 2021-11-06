@@ -1,4 +1,6 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
+
+mix.disableNotifications()
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +13,10 @@ const mix = require('laravel-mix');
  |
  */
 
+if (mix.inProduction()) {
+  mix.version()
+}
+
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+  .vue()
+  .extract(['vue'])
